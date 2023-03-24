@@ -22,3 +22,8 @@ use Illuminate\Support\Facades\Route;
 Route::apiResource('students', App\Http\Controllers\StudentController::class);
 Route::apiResource('departments', App\Http\Controllers\DepartmentController::class);
 
+// get those students whose phone number has n digits
+Route::get('students/phone/{k}', [App\Http\Controllers\StudentController::class, 'phone']);
+
+
+

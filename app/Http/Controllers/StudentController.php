@@ -29,13 +29,19 @@ class StudentController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     */
+    // get those students whose phone number has n digits
+    public function phone($k)
+    {
+        // return all Students whose phone length is $k
+        return Student::where('phone', 'like',  str_repeat('_', $k) )->get();
+
+    }
+
+
     public function show(Student $student)
     {
-        // return a single Student
-        return $student;
+        // return a single Student  along with Department
+        return $student->load('department');
 
     }
 

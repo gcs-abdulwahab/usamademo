@@ -14,9 +14,11 @@ class DepartmentController extends Controller
     public function index()
     {
         // check if request is coming from api or web
-        if (request()->wantsJson()) {
-            // return all Departments
-            return Department::all();
+        if (request()->expectsJson()) {
+            // return all Departments along with the students count
+            return Department::withCount('students')->get();
+
+
         } else {
             // return all Departments
             return view('departments.index', ['departments' => Department::all()]);
